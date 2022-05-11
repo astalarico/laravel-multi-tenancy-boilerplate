@@ -1,0 +1,117 @@
+models:
+  Organization:
+    name: string
+    slug: string
+    contact_name: string nullable
+    contact_email: string nullable
+    facebook: string nullable
+    instagram: string nullable
+    twitter: string nullable
+    tiktok: string nullable
+    youtube: string nullable
+    contact_phone: string nullable
+    website: string nullable
+    description: string nullable
+    relationships:
+      hasMany: Member, Event, Venue, Category, Tag, Region, Request, Amenity
+  Member:
+    name: string
+    slug: string
+    facebook: string nullable
+    instagram: string nullable
+    twitter: string nullable
+    tiktok: string nullable
+    youtube: string nullable
+    phone: string nullable
+    email: string nullable
+    website: string nullable
+    profile_image: string
+    active: boolean
+    featured: boolean
+    description: string nullable
+    excerpt: string nullable
+    organization_id: id
+    relationships:
+      belongsTo: Organization
+      hasMany: Category, Tag, User, Venue
+  Event:
+    name: string index
+    slug: string
+    start_date: timestamp
+    end_date : timestamp
+    facebook: string nullable
+    instagram: string nullable
+    twitter: string nullable
+    tiktok: string nullable
+    youtube: string nullable
+    phone: string nullable
+    email: string nullable
+    website: string nullable
+    profile_image: string
+    active: boolean
+    featured: boolean
+    description: string nullable
+    excerpt: string nullable
+    organization_id: id
+    relationships:
+      belongsTo: Organization
+      hasMany: Category, Tag, Venue
+      belongsToMany: Member
+  Venue:
+    name: string index
+    email: string nullable
+    city: string nullable
+    state: string nullable
+    street: string nullable
+    postal_code: string nullable
+    secondary_address: string nullable
+    facebook: string nullable
+    instagram: string nullable
+    twitter: string nullable
+    tiktok: string nullable
+    youtube: string nullable
+    phone: string nullable
+    website: string nullable
+    profile_image: string nullable
+    active: boolean
+    featured: boolean 
+    description: string nullable
+    excerpt: string nullable
+    organization_id: id
+    lat: decimal
+    lng: decimal
+    relationships:
+      belongsToMany: Member, Event, Organization
+  Amenity:
+    name: string
+    slug: string
+    organization_id: id
+    relationships:
+      belongsToMany: Venue
+      belongsTo : Organization
+  Category:
+    name: string
+    organization_id: id:organization
+    relationships:
+      belongsToMany: Member, Event, Venue
+      belongsTo : Organization
+  Tag:
+    name: string
+    slug: string
+    organization_id: id
+    relationships:
+      belongsTo : Organization
+      belongsToMany: Venue, Member, Event
+  Region:
+    name: string
+    slug: string
+    organization_id: id
+    relationships:
+      belongsTo : Organization
+  Request:
+    name: string
+    slug: string
+    organization_id: id
+    relationships:
+      belongsTo : Organization
+  

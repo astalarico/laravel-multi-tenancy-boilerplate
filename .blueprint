@@ -1,0 +1,50 @@
+created:
+    - database/factories/OrganizationFactory.php
+    - database/factories/MemberFactory.php
+    - database/factories/EventFactory.php
+    - database/factories/VenueFactory.php
+    - database/factories/AmenityFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/TagFactory.php
+    - database/factories/RegionFactory.php
+    - database/factories/RequestFactory.php
+    - database/migrations/2022_05_09_124936_create_organizations_table.php
+    - database/migrations/2022_05_09_124937_create_members_table.php
+    - database/migrations/2022_05_09_124938_create_events_table.php
+    - database/migrations/2022_05_09_124939_create_venues_table.php
+    - database/migrations/2022_05_09_124940_create_amenities_table.php
+    - database/migrations/2022_05_09_124941_create_categories_table.php
+    - database/migrations/2022_05_09_124942_create_tags_table.php
+    - database/migrations/2022_05_09_124943_create_regions_table.php
+    - database/migrations/2022_05_09_124944_create_requests_table.php
+    - database/migrations/2022_05_09_124945_create_event_member_table.php
+    - database/migrations/2022_05_09_124946_create_member_venue_table.php
+    - database/migrations/2022_05_09_124947_create_event_venue_table.php
+    - database/migrations/2022_05_09_124948_create_organization_venue_table.php
+    - database/migrations/2022_05_09_124949_create_amenity_venue_table.php
+    - database/migrations/2022_05_09_124950_create_category_member_table.php
+    - database/migrations/2022_05_09_124951_create_category_event_table.php
+    - database/migrations/2022_05_09_124952_create_category_venue_table.php
+    - database/migrations/2022_05_09_124953_create_tag_venue_table.php
+    - database/migrations/2022_05_09_124954_create_member_tag_table.php
+    - database/migrations/2022_05_09_124955_create_event_tag_table.php
+    - app/Models/Organization.php
+    - app/Models/Member.php
+    - app/Models/Event.php
+    - app/Models/Venue.php
+    - app/Models/Amenity.php
+    - app/Models/Category.php
+    - app/Models/Tag.php
+    - app/Models/Region.php
+    - app/Models/Request.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, organization_id: 'biginteger unsigned nullable', remember_token: 'string:100 nullable', permissions: 'json nullable' }
+    Organization: { name: string, slug: string, contact_name: 'string nullable', contact_email: 'string nullable', facebook: 'string nullable', instagram: 'string nullable', twitter: 'string nullable', tiktok: 'string nullable', youtube: 'string nullable', contact_phone: 'string nullable', website: 'string nullable', description: 'string nullable', relationships: { hasMany: 'Member, Event, Venue, Category, Tag, Region, Request, Amenity' } }
+    Member: { name: string, slug: string, facebook: 'string nullable', instagram: 'string nullable', twitter: 'string nullable', tiktok: 'string nullable', youtube: 'string nullable', phone: 'string nullable', email: 'string nullable', website: 'string nullable', profile_image: string, active: boolean, featured: boolean, description: 'string nullable', excerpt: 'string nullable', organization_id: id, relationships: { belongsTo: Organization, hasMany: 'Category, Tag, User, Venue' } }
+    Event: { name: 'string index', slug: string, start_date: timestamp, end_date: timestamp, facebook: 'string nullable', instagram: 'string nullable', twitter: 'string nullable', tiktok: 'string nullable', youtube: 'string nullable', phone: 'string nullable', email: 'string nullable', website: 'string nullable', profile_image: string, active: boolean, featured: boolean, description: 'string nullable', excerpt: 'string nullable', organization_id: id, relationships: { belongsTo: Organization, hasMany: 'Category, Tag, Venue', belongsToMany: Member } }
+    Venue: { name: 'string index', email: 'string nullable', city: 'string nullable', state: 'string nullable', street: 'string nullable', postal_code: 'string nullable', secondary_address: 'string nullable', facebook: 'string nullable', instagram: 'string nullable', twitter: 'string nullable', tiktok: 'string nullable', youtube: 'string nullable', phone: 'string nullable', website: 'string nullable', profile_image: 'string nullable', active: boolean, featured: boolean, description: 'string nullable', excerpt: 'string nullable', organization_id: id, lat: decimal, lng: decimal, relationships: { belongsToMany: 'Member, Event, Organization' } }
+    Amenity: { name: string, slug: string, organization_id: id, relationships: { belongsToMany: Venue, belongsTo: Organization } }
+    Category: { name: string, organization_id: 'id:organization', relationships: { belongsToMany: 'Member, Event, Venue', belongsTo: Organization } }
+    Tag: { name: string, slug: string, organization_id: id, relationships: { belongsTo: Organization, belongsToMany: 'Venue, Member, Event' } }
+    Region: { name: string, slug: string, organization_id: id, relationships: { belongsTo: Organization } }
+    Request: { name: string, slug: string, organization_id: id, relationships: { belongsTo: Organization } }
