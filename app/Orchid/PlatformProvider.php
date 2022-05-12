@@ -31,60 +31,68 @@ class PlatformProvider extends OrchidServiceProvider
         $user = auth()->user();
         // dd($user);
         return [
-            Menu::make('Example screen')
-                ->icon('monitor')
-                ->route('platform.example')
-                ->title('Navigation')
-                ->badge(function () {
-                    return 6;
-                }),
+            // Menu::make('Example screen')
+            //     ->icon('monitor')
+            //     ->route('platform.example')
+            //     ->title('Navigation')
+            //     ->badge(function () {
+            //         return 6;
+            //     }),
 
-            Menu::make('Dropdown menu')
-                ->icon('code')
-                ->list([
-                    Menu::make('Sub element item 1')->icon('bag'),
-                    Menu::make('Sub element item 2')->icon('heart'),
-                ]),
+            // Menu::make('Dropdown menu')
+            //     ->icon('code')
+            //     ->list([
+            //         Menu::make('Sub element item 1')->icon('bag'),
+            //         Menu::make('Sub element item 2')->icon('heart'),
+            //     ]),
 
-            Menu::make('Basic Elements')
-                ->title('Form controls')
-                ->icon('note')
-                ->route('platform.example.fields'),
+            // Menu::make('Basic Elements')
+            //     ->title('Form controls')
+            //     ->icon('note')
+            //     ->route('platform.example.fields'),
 
-            Menu::make('Advanced Elements')
-                ->icon('briefcase')
-                ->route('platform.example.advanced'),
+            // Menu::make('Advanced Elements')
+            //     ->icon('briefcase')
+            //     ->route('platform.example.advanced'),
 
-            Menu::make('Text Editors')
-                ->icon('list')
-                ->route('platform.example.editors'),
+            // Menu::make('Text Editors')
+            //     ->icon('list')
+            //     ->route('platform.example.editors'),
 
-            Menu::make('Overview layouts')
-                ->title('Layouts')
-                ->icon('layers')
-                ->route('platform.example.layouts'),
+            // Menu::make('Overview layouts')
+            //     ->title('Layouts')
+            //     ->icon('layers')
+            //     ->route('platform.example.layouts'),
 
-            Menu::make('Chart tools')
-                ->icon('bar-chart')
-                ->route('platform.example.charts'),
+            // Menu::make('Chart tools')
+            //     ->icon('bar-chart')
+            //     ->route('platform.example.charts'),
 
-            Menu::make('Cards')
-                ->icon('grid')
-                ->route('platform.example.cards')
-                ->divider(),
+            // Menu::make('Cards')
+            //     ->icon('grid')
+            //     ->route('platform.example.cards')
+            //     ->divider(),
 
-            Menu::make('Documentation')
-                ->title('Docs')
-                ->icon('docs')
-                ->url('https://orchid.software/en/docs'),
+            // Menu::make('Documentation')
+            //     ->title('Docs')
+            //     ->icon('docs')
+            //     ->url('https://orchid.software/en/docs'),
 
-            Menu::make('Changelog')
-                ->icon('shuffle')
-                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-                ->target('_blank')
-                ->badge(function () {
-                    return Dashboard::version();
-                }, Color::DARK()),
+            // Menu::make('Changelog')
+            //     ->icon('shuffle')
+            //     ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
+            //     ->target('_blank')
+            //     ->badge(function () {
+            //         return Dashboard::version();
+            //     }, Color::DARK()),
+            Menu::make(__('Organizations'))
+            ->icon('organization')
+            ->route('platform.organizations')
+            ->permission('platform.systems.organizations'),
+
+            Menu::make(__('Members'))
+            ->icon('organization')
+            ->route('platform.members'),
 
             Menu::make(__('Users'))
                 ->icon('user')
@@ -95,17 +103,7 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make(__('Roles'))
                 ->icon('lock')
                 ->route('platform.systems.roles')
-                ->permission('platform.systems.roles'),
-
-            Menu::make(__('Organizations'))
-                ->icon('organization')
-                ->route('platform.organizations')
-                ->permission('platform.systems.organizations'),
-
-            Menu::make(__('Members'))
-                ->icon('organization')
-                ->route('platform.members')
-         
+                ->permission('platform.systems.roles')
         ];
     }
 
@@ -129,7 +127,7 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
-                ->addPermission('platform.systems.organization', __('Organizations'))
+                ->addPermission('platform.systems.organizations', __('Organizations'))
                 ->addPermission('platform.systems.users', __('Users')),
 
         ];
