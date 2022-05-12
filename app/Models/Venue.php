@@ -63,10 +63,6 @@ class Venue extends Model
         return $this->belongsToMany(Event::class);
     }
 
-    public function organizations()
-    {
-        return $this->belongsToMany(Organization::class);
-    }
 
     public function organization()
     {

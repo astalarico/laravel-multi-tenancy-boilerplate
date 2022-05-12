@@ -54,11 +54,6 @@ class Event extends Model
         return $this->belongsTo(Organization::class);
     }
 
-    public function organization()
-    {
-        return $this->belongsTo(Organization::class);
-    }
-
     public function categories()
     {
         return $this->hasMany(Category::class);

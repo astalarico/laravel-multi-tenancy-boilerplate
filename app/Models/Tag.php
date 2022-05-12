@@ -35,10 +35,6 @@ class Tag extends Model
         return $this->belongsTo(Organization::class);
     }
 
-    public function organization()
-    {
-        return $this->belongsTo(Organization::class);
-    }
 
     public function venues()
     {

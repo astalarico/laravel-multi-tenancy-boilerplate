@@ -35,8 +35,5 @@ class Request extends Model
         return $this->belongsTo(Organization::class);
     }
 
-    public function organization()
-    {
-        return $this->belongsTo(Organization::class);
-    }
+
 }
