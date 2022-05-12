@@ -9,9 +9,10 @@ use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
 use Orchid\Screen\Actions\Menu;
 use Orchid\Support\Color;
-
+use Orchid\Platform\Auth;
 class PlatformProvider extends OrchidServiceProvider
 {
+
     /**
      * @param Dashboard $dashboard
      */
@@ -27,6 +28,8 @@ class PlatformProvider extends OrchidServiceProvider
      */
     public function registerMainMenu(): array
     {
+        $user = auth()->user();
+        // dd($user);
         return [
             Menu::make('Example screen')
                 ->icon('monitor')
@@ -96,11 +99,13 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make(__('Organizations'))
                 ->icon('organization')
-                ->route('platform.organizations'),
+                ->route('platform.organizations')
+                ->permission('platform.systems.organizations'),
 
             Menu::make(__('Members'))
                 ->icon('organization')
                 ->route('platform.members')
+         
         ];
     }
 
@@ -124,7 +129,9 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             ItemPermission::group(__('System'))
                 ->addPermission('platform.systems.roles', __('Roles'))
+                ->addPermission('platform.systems.organization', __('Organizations'))
                 ->addPermission('platform.systems.users', __('Users')),
+
         ];
     }
 }

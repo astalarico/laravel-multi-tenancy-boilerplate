@@ -19,7 +19,9 @@ class MemberListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'members' => Member::get()
+        ];
     }
 
     /**
@@ -43,12 +45,31 @@ class MemberListScreen extends Screen
     }
 
     /**
+     * @param Member $member
+     *
+     * @return array
+     */
+    public function asyncGetMember(Member $member): iterable
+    {
+        return [
+            'member' => $member,
+        ];
+    }
+
+   /**
      * Views.
      *
-     * @return \Orchid\Screen\Layout[]|string[]
+     * @return string[]|\Orchid\Screen\Layout[]
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            MemberFiltersLayout::class,
+            MemberListLayout::class,
+
+            Layout::modal('asyncEditMemberModal', MemberEditLayout::class)
+                ->async('asyncGetMember'),
+        ];
     }
+
 }
