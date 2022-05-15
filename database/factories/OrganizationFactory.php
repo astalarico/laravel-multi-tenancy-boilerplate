@@ -23,17 +23,17 @@ class OrganizationFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'slug' => $this->faker->slug,
-            'contact_name' => $this->faker->word,
-            'contact_email' => $this->faker->word,
-            'facebook' => $this->faker->word,
-            'instagram' => $this->faker->word,
-            'twitter' => $this->faker->word,
-            'tiktok' => $this->faker->word,
-            'youtube' => $this->faker->word,
-            'contact_phone' => $this->faker->word,
-            'website' => $this->faker->word,
+            'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
+            'contact_name' => $this->faker->name(),
+            'contact_email' => $this->faker->email(),
+            'facebook' => $this->faker->url(),
+            'instagram' => $this->faker->url(),
+            'twitter' => $this->faker->url(),
+            'tiktok' => $this->faker->url(),
+            'youtube' => $this->faker->url(),
+            'contact_phone' => $this->faker->phoneNumber(),
+            'website' => $this->faker->url(),
             'description' => $this->faker->text,
         ];
     }

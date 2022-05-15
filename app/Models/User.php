@@ -6,6 +6,7 @@ use Orchid\Platform\Models\User as Authenticatable;
 use App\Traits\BelongsToOrganization;
 class User extends Authenticatable
 {
+    
     use BelongsToOrganization;
     /**
      * The attributes that are mass assignable.

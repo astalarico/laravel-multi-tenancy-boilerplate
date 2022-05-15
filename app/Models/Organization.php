@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
+use Laravel\Sanctum\HasApiTokens;
 class Organization extends Model
 {
     use HasFactory;
     use AsSource, Filterable, Attachable;
+    use HasApiTokens;
     /**
      * The attributes that are mass assignable.
      *
@@ -29,6 +31,7 @@ class Organization extends Model
         'contact_phone',
         'website',
         'description',
+        'api_key'
     ];
 
     /**

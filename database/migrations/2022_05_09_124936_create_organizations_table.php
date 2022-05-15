@@ -27,6 +27,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('contact_phone')->nullable();
             $table->string('website')->nullable();
             $table->string('description')->nullable();
+            $table->string('api_key')->nullable();
             $table->timestamps();
         });
     }

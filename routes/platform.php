@@ -18,6 +18,7 @@ use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 use App\Orchid\Screens\Organization\OrganizationListScreen;
+use App\Orchid\Screens\Organization\OrganizationEditScreen;
 use App\Orchid\Screens\Member\MemberListScreen;
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +114,14 @@ Route::screen('roles', RoleListScreen::class)
 // Route::screen('example-cards', ExampleCardsScreen::class)->name('platform.example.cards');
 // Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
 Route::screen('organizations', OrganizationListScreen::class)->name('platform.organizations');
+Route::screen('organizations/{organization}/edit', OrganizationEditScreen::class)
+    ->name('platform.organizations.edit');
+    // ->breadcrumbs(function (Trail $trail, $organization) {
+    //     return $trail
+    //         ->parent('platform.organizations')
+    //         ->push(__('Organization'), route('platform.organizations.edit', $organization));
+    // });
+
 Route::screen('members', MemberListScreen::class)->name('platform.members');
 
 //Route::screen('idea', Idea::class, 'platform.screens.idea');

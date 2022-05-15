@@ -28,7 +28,7 @@ class PlatformProvider extends OrchidServiceProvider
      */
     public function registerMainMenu(): array
     {
-        $user = auth()->user();
+ 
         // dd($user);
         return [
             // Menu::make('Example screen')
