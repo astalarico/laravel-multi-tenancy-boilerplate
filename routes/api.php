@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/members/{member}/{name}', function (Request $request, $memberName, $name) {
     return Member::where('organization_id', 20)->get();
+    //return $request->header();
 });
