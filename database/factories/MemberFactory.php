@@ -26,6 +26,7 @@ class MemberFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'slug' => $this->faker->slug(),
+            'users' => null,
             'facebook' => $this->faker->url(),
             'instagram' => $this->faker->url(),
             'twitter' => $this->faker->url(),

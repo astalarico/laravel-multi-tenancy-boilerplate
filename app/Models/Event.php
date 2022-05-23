@@ -20,6 +20,7 @@ class Event extends Model
     protected $fillable = [
         'name',
         'slug',
+        'users',
         'start_date',
         'end_date',
         'facebook',
@@ -50,6 +51,7 @@ class Event extends Model
         'active' => 'boolean',
         'featured' => 'boolean',
         'organization_id' => 'integer',
+        'users' => 'array'
     ];
 
     public function organization()

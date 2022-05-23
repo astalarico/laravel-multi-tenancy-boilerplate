@@ -23,6 +23,7 @@ class Member extends Model
         'name',
         'slug',
         'facebook',
+        'users',
         'instagram',
         'twitter',
         'tiktok',
@@ -48,6 +49,7 @@ class Member extends Model
         'active' => 'boolean',
         'featured' => 'boolean',
         'organization_id' => 'integer',
+        'users' => 'array'
     ];
 
     public function organization()

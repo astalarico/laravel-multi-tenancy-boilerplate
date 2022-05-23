@@ -5,10 +5,12 @@ namespace App\Orchid\Resources;
 use Orchid\Crud\Resource;
 use Orchid\Screen\TD;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Relation;
 use App\Orchid\Actions\ListAction;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\DropDown;
+use App\Models\User;
 use Orchid\Screen\Sight;
 class EventResource extends Resource
 {
@@ -30,6 +32,10 @@ class EventResource extends Resource
             Input::make('name')
                 ->title('Name')
                 ->placeholder('Enter name here'),
+            Relation::make('users.')
+                ->fromModel(User::class, 'name')
+                ->multiple()
+                ->title('Choose your users')
         ];
     }
 

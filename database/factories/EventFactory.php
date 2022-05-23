@@ -25,6 +25,7 @@ class EventFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'users' => null,
             'slug' => $this->faker->slug,
             'start_date' => $this->faker->dateTime(),
             'end_date' => $this->faker->dateTime(),

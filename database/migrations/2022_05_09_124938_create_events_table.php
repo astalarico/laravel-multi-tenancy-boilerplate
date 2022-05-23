@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('name')->index();
             $table->string('slug');
+            $table->json('users')->nullable();
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->string('facebook')->nullable();
