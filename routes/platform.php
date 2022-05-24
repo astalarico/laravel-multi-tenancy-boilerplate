@@ -20,6 +20,7 @@ use Tabuna\Breadcrumbs\Trail;
 use App\Orchid\Screens\Organization\OrganizationListScreen;
 use App\Orchid\Screens\Organization\OrganizationEditScreen;
 use App\Orchid\Screens\Member\MemberListScreen;
+use App\Orchid\Screens\Event\EventListScreen;
 /*
 |--------------------------------------------------------------------------
 | Dashboard Routes
@@ -123,5 +124,5 @@ Route::screen('organizations/{organization}/edit', OrganizationEditScreen::class
     // });
 
 Route::screen('members', MemberListScreen::class)->name('platform.members');
-
+Route::screen('events', EventListScreen::class)->name('platform.events');
 //Route::screen('idea', Idea::class, 'platform.screens.idea');
